@@ -7,20 +7,39 @@ Requires Neovim 0.10+, Windows (drive letters), a Nerd Font for the icons.
 
 ## Install
 
-lazy.nvim:
+[lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-{ dir = 'D:/Test/project-picker', name = 'project-picker', cmd = 'Projects', opts = {} }
+{
+  'Kepopep/project-picker',
+  cmd = 'Projects',
+  opts = {}, -- see Options
+}
 ```
 
-Without a plugin manager:
+From a local clone (https://github.com/Kepopep/project-picker), with lazy.nvim:
 
 ```lua
-vim.opt.rtp:append('D:/Test/project-picker')
+{ dir = 'C:/path/to/project-picker', name = 'project-picker', cmd = 'Projects', opts = {} }
 ```
 
-Then `:Projects` (or `require('project_picker').open()`). To open it at startup instead of the
-dashboard, start `nvim -S D:\Test\nvim-picker.lua` (the launcher next to this folder does this).
+or without a plugin manager:
+
+```lua
+vim.opt.rtp:append('C:/path/to/project-picker')
+```
+
+Then `:Projects` (or `require('project_picker').open()`).
+
+### Open at startup
+
+To show the picker instead of the dashboard when nvim starts, call `open()` before `VimEnter`,
+for example from a small script started with `nvim -S`:
+
+```lua
+vim.opt.rtp:append('C:/path/to/project-picker')
+require('project_picker').open()
+```
 
 ## Options
 
